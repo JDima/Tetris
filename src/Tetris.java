@@ -49,6 +49,7 @@ public class Tetris {
         });
         MenuStartActivity mA = new MenuStartActivity(frame, controller, scoreList);
         StatisticsActivity sA = new StatisticsActivity(mA, scoreList);
+        HelpActivity hA = new HelpActivity(mA, scoreList);
 
         JMenuBar mb = new JMenuBar();
 
@@ -61,6 +62,11 @@ public class Tetris {
         scoreListItem.setMnemonic(KeyEvent.VK_S);
         scoreListItem.addActionListener(sA);
         mb.add(scoreListItem);
+
+        JMenuItem helpItem = new JMenuItem("Help");
+        helpItem.setMnemonic(KeyEvent.VK_H);
+        helpItem.addActionListener(hA);
+        mb.add(helpItem);
 
 
         frame.setJMenuBar(mb);

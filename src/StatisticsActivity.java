@@ -21,7 +21,7 @@ public class StatisticsActivity implements ActionListener{
             }
             sb.append(user + " - " + scoreList.scores[i++] + "\n");
         }
-        JOptionPane.showMessageDialog(null, sb);
+        JOptionPane.showMessageDialog(null, sb, "Statistics", JOptionPane.INFORMATION_MESSAGE);
 
     }
     @Override
