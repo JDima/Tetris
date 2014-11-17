@@ -49,8 +49,9 @@ public class MainActivity {
 
     private void gameOverBox(int nowScore) {
         JOptionPane.showMessageDialog(null, "Game over! You score is " + nowScore + " points!", "The End", JOptionPane.INFORMATION_MESSAGE);
-        String nickname = JOptionPane.showInputDialog(null, "Enter your nickname","Save result", JOptionPane.INFORMATION_MESSAGE);
-
+        String nickname;
+        while ((nickname = JOptionPane.showInputDialog(null, "Enter your nickname","Save result", JOptionPane.INFORMATION_MESSAGE)).isEmpty())
+            JOptionPane.showMessageDialog(null, "Incorrect nickname!", "Error", JOptionPane.INFORMATION_MESSAGE);;
         int i = 0, cI = -1;
         for (int score : scoreList.scores) {
             if (score <= nowScore) {

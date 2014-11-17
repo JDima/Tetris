@@ -23,7 +23,7 @@ public class Tetris {
 
         Model model = new Model();
         View view = new View(kernel);
-        ScoreList scoreList = new ScoreList("ScoreList.txt");
+        ScoreList scoreList = new ScoreList("ScoreList.xls");
         final Controller controller = new Controller(model, view);
 
         frame.addKeyListener(new KeyAdapter() {
