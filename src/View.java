@@ -7,8 +7,9 @@ public class View {
 	}
 
 	public void updateState(State state) {
-		drawField(state.field);
-		drawFigure(state);
+        _kernel.updateState(state);
+		//drawField(state.field);
+		//drawFigure(state);
 	}
 
 	private void drawFigure(State state) {

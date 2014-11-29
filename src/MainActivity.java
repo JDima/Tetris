@@ -9,14 +9,16 @@ public class MainActivity {
     private Controller controller;
     private JFrame frame;
     private ScoreList scoreList;
+    private Kernel kernel;
     private boolean isEnded;
 
-    MainActivity(final Controller controller, JFrame frame, ScoreList scoreList) {
+    MainActivity(final Controller controller, JFrame frame, ScoreList scoreList, Kernel kernel) {
         service =
                 Executors.newSingleThreadScheduledExecutor();
         this.frame = frame;
         this.controller = controller;
         this.scoreList = scoreList;
+        this.kernel = kernel;
     }
 
     public void play() {
@@ -25,11 +27,13 @@ public class MainActivity {
             public void run() {
                 try {
                     isEnded = false;
+                    kernel.gameEnded(isEnded);
                     int score = controller.getScore();
                     frame.setTitle("Score is " + score);
                     controller.slideDownOneRow();
                 }catch (Exception e) {
                     isEnded = true;
+                    kernel.gameEnded(isEnded);
                     service.shutdown();
                     gameOverBox(controller.getScore());
                 }

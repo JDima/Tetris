@@ -7,11 +7,13 @@ public class MenuStartActivity implements ActionListener {
     private JFrame frame;
     private MainActivity mA;
     private ScoreList scoreList;
+    private Kernel kernel;
 
-    MenuStartActivity(JFrame frame, Controller controller, ScoreList scoreList) {
+    MenuStartActivity(JFrame frame, Controller controller, ScoreList scoreList, Kernel kernel) {
         this.frame = frame;
         this.controller = controller;
         this.scoreList = scoreList;
+        this.kernel = kernel;
     }
 
     public void stopGame() {
@@ -23,7 +25,7 @@ public class MenuStartActivity implements ActionListener {
     public void playGameAfterStat() {
         if (mA != null && !mA.isEndedGame()) {
             mA.end();
-            mA = new MainActivity(controller, frame, scoreList);
+            mA = new MainActivity(controller, frame, scoreList, kernel);
             mA.play();
         }
     }
@@ -32,7 +34,7 @@ public class MenuStartActivity implements ActionListener {
         if (mA != null) {
             mA.end();
         }
-        mA = new MainActivity(controller, frame, scoreList);
+        mA = new MainActivity(controller, frame, scoreList, kernel);
         mA.play();
     }
 

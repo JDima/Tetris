@@ -9,17 +9,14 @@ public class Tetris {
 
 
         JFrame frame = new JFrame("Tetris");
+        Kernel kernel = new JavaKernel();
+
+        JPanel panel = kernel.getPanel();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
-        JPanel panel = new JPanel();
-        panel.setPreferredSize(new Dimension(270, 620));
-
-        frame.add(panel);
-
         frame.pack();
-
-        Kernel kernel = new JavaKernel(panel);
+        frame.add(panel);
+        frame.setSize(new Dimension(270, 650));
+        frame.setResizable(false);
 
         Model model = new Model();
         View view = new View(kernel);
@@ -47,7 +44,7 @@ public class Tetris {
             }
 
         });
-        MenuStartActivity mA = new MenuStartActivity(frame, controller, scoreList);
+        MenuStartActivity mA = new MenuStartActivity(frame, controller, scoreList, kernel);
         StatisticsActivity sA = new StatisticsActivity(mA, scoreList);
         HelpActivity hA = new HelpActivity(mA, scoreList);
 
